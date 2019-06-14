@@ -1,0 +1,126 @@
+/* CREATED BY A JPRite */
+#include<stdio.h>
+
+#include<conio.h>
+
+#include<string.h>
+
+void main()
+
+{
+	
+  int c,ckb,i=0,m,s,cm,k,j,l=0;
+	/*various variables to calc values based on input */
+  int cs,ts,ss,sp,b;
+	
+  char name[30],name1[50];
+/*name to find the song and name given for ringtone */	
+  FILE *fp,*n;
+	/*file pointers to open and perform operations on mp3 files */
+  clrscr();
+	
+  printf("\n Enter the song name ->");
+	
+  gets(name);
+	
+  printf("\n Enter edited song name->");
+	
+  gets(name1);
+	
+  fp=fopen(name,"r");
+	/*see here we r opening the song in read mode so data is not be overwritten */
+  n=fopen(name1,"a");
+	/* we r opening another file pointer in append to perform copying operations */
+  if(fp==NULL)
+	
+  {
+		
+    printf("\n Song not found");
+}
+	
+  else
+	
+  {
+		
+    printf("\n Enter the song duration");
+		
+    printf("\n Enter last minute");
+		
+    printf("\n Enter last second");
+		
+    scanf("%d",&m);
+		
+    scanf("%d",&s);
+		
+    printf("\n CUTTINGTIME");
+		
+    printf("\n starts at");
+		
+    printf("\n MINUTE:");
+		
+    scanf("%d",&cm);
+		
+    printf("\nseconds");
+		
+    scanf("%d",&cs);
+		
+    ts=(m*60)+s;
+		
+    ss=(cm*60)+cs;
+		
+    sp=(ts/ss);
+		
+    sp=100/sp;
+	   
+    while((k=getc(fp))!=EOF)
+	   
+    {
+	   	
+      i++;
+	   
+      }
+   	
+   ckb=(sp*i)/100;
+   	
+   printf("\n ckb is %d",ckb);
+   	
+   fseek(fp,2,SEEK_SET);
+
+   printf("\n File pointer position %d",ftell(fp));	
+ 
+   while((c=getc(fp))!=EOF)
+ 
+   {      
+       
+     l++;
+       
+    if(l==ckb)
+      
+     {
+        
+      while((b=getc(fp))!=EOF)
+        
+      {
+ 	  
+       putc(b,n);
+        
+           }
+ }
+ }
+		
+   printf("\n Song cutted successfully");
+   
+fclose(fp);
+   
+fclose(n);
+
+   printf("\n The EnD");
+   
+printf("\n ******************");
+	
+    }
+getch();
+   
+}
+	
+	
